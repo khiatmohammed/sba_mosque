@@ -33,7 +33,7 @@ from math import (
 )
 
 
-app = FastAPI()
+app: FastAPI = FastAPI()
 
 
 app.add_middleware(
@@ -45,7 +45,7 @@ app.add_middleware(
 )
 
 
-data = {
+data: dict = {
     (35.1788686, -0.6326298): "مسجد الشهداء",
     (35.1826881, -0.6374805): "مسجد إبن تيمية",
     (35.190847, -0.6315822): "مسجد أبو بكر الصديق",
@@ -124,7 +124,7 @@ class Coordinates(BaseModel):
 
 
 @app.post("/")
-def get_nearest_mosque(coords: Coordinates):
+def get_nearest_mosque(coords: Coordinates) -> dict:
     min_distance: float = float("inf")
     nearest_mosque: None = None
 
