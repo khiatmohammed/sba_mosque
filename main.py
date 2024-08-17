@@ -125,13 +125,13 @@ class Coordinates(BaseModel):
 
 @app.post("/")
 def get_nearest_mosque(coords: Coordinates):
-    min_distance = float("inf")
-    nearest_mosque = None
+    min_distance: float = float("inf")
+    nearest_mosque: None = None
 
     for (lat, lon), mosque in data.items():
-        distance = haversine_distance(coords.lat, coords.lon, lat, lon)
+        distance: float = haversine_distance(coords.lat, coords.lon, lat, lon)
         if distance < min_distance:
-            min_distance = distance
-            nearest_mosque = mosque
+            min_distance: float = distance
+            nearest_mosque: str = mosque
 
     return {"nearest_mosque": nearest_mosque}
